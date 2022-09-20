@@ -1,0 +1,34 @@
+version: '3.9'
+
+services:
+  postgres:
+    container_name: postgres_db
+    image: postgres:14.5-alpine
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin
+      POSTGRES_DB: postgres
+      PGDATA: /data/postgres
+    volumes:
+      - postgres:/data/postgres
+    ports:
+      - "5400:5432"
+
+  nats:
+    container_name: nats_streaming
+    image: nats-streaming:0.24.6
+    ports:
+      - "4222:4222"
+
+  nats-ui:
+    container_name: nats_streaming_ui
+    image: piotrpersona/nats-streaming-ui:latest
+    ports:
+      - "8282:8282"
+    environment:
+      STAN_URL: "http://nats:4222"
+      STAN_MONITOR_URL: "http://nats:8222"
+      STAN_CLUSTER: test-cluster
+
+volumes:
+  postgres:
