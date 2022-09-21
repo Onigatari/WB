@@ -1,0 +1,49 @@
+{
+  "order_uid": "1337uw6ubc2b4b6test",
+  "track_number": "WBILMTESTTRACK",
+  "entry": "WBIL",
+  "delivery": {
+    "name": "Base Boris",
+    "phone": "+9480000000",
+    "zip": "4648427",
+    "city": "Moscow",
+    "address": "Lenina 27",
+    "region": "Temp",
+    "email": "temp@mail.ru"
+  },
+  "payment": {
+    "transaction": "1337uw6ubc2b4b6test",
+    "request_id": "",
+    "currency": "USD",
+    "provider": "wbpay",
+    "amount": 1817,
+    "payment_dt": 1637907727,
+    "bank": "alpha",
+    "delivery_cost": 1500,
+    "goods_total": 317,
+    "custom_fee": 0
+  },
+  "items": [
+    {
+      "chrt_id": 9834930,
+      "track_number": "WBILMTESTTRACK",
+      "price": 120,
+      "rid": "c84219087a764ae0btest",
+      "name": "Candy",
+      "sale": 30,
+      "size": "0",
+      "total_price": 400,
+      "nm_id": 4889212,
+      "brand": "Gogo",
+      "status": 202
+    }
+  ],
+  "locale": "en",
+  "internal_signature": "",
+  "customer_id": "test",
+  "delivery_service": "meest",
+  "shardkey": "9",
+  "sm_id": 99,
+  "date_created": "2022-11-26T06:22:19Z",
+  "oof_shard": "1"
+}

@@ -1,4 +1,4 @@
--- name: create-deliveries
+-- name: create-table-deliveries
 CREATE TABLE DELIVERY
 (
     delivery_name VARCHAR UNIQUE,
@@ -10,7 +10,7 @@ CREATE TABLE DELIVERY
     email         VARCHAR(30)
 );
 
--- name: create-payments
+-- name: create-table-payments
 CREATE TABLE PAYMENT
 (
     payment_transaction VARCHAR UNIQUE,
@@ -25,7 +25,7 @@ CREATE TABLE PAYMENT
     custom_fee          INT
 );
 
--- name: create-orders
+-- name: create-table-orders
 CREATE TABLE ORDERS
 (
     order_uid          VARCHAR PRIMARY KEY,
@@ -45,7 +45,7 @@ CREATE TABLE ORDERS
     CONSTRAINT payment_fk FOREIGN KEY (payment) REFERENCES payment (payment_transaction)
 );
 
--- name: create-items
+-- name: create-table-items
 CREATE TABLE ITEM
 (
     chrt_id      BIGINT,
@@ -65,15 +65,3 @@ CREATE TABLE ITEM
         REFERENCES orders (order_uid)
         ON DELETE CASCADE
 );
-
--- name: insert-delivery
-INSERT INTO delivery (delivery_name, phone, zip, city, address, region, email)
-VALUES (?, ?, ?, ?, ?, ?, ?);
-
-INSERT INTO payment (payment_transaction, request_id, currency, payment_provider, amount, payment_dt, bank,
-                     delivery_cost, goods_total, custom_fee)
-
-VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
-
-SELECT order_uid
-FROM orders;

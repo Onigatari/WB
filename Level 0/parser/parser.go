@@ -67,32 +67,36 @@ func init() {
 }
 
 func ParseJsonFile() {
-	jsonFile, err := os.Open("model.json")
+	jsonFile, err := os.Open("models.json")
 
 	if err != nil {
 		log.Println(err)
 	}
 
-	log.Println("model.json open")
+	log.Println("models.json open")
 
 	defer jsonFile.Close()
 
-	log.Println("model.json close")
+	log.Println("models.json close")
 
 	byteValue, _ := io.ReadAll(jsonFile)
 
 	var order Order
 
 	if err := json.Unmarshal(byteValue, &order); err != nil {
-		log.Println("неудалось декодировать json файл")
+		log.Println("failed to decode json file")
 	}
 
 	log.Println("order_uid: " + order.OrderUID)
 	log.Println("delivery_name: " + order.Delivery.Name)
 }
 
-//func ParseJsonByteArray(byteValue []byte) (order Order) {
-//	json.Unmarshal(byteValue, &order)
-//
-//	return
-//}
+func ParseJsonByteArray(byteValue []byte) (order Order) {
+	err := json.Unmarshal(byteValue, &order)
+	if err != nil {
+		log.Println("json byte array failed parser")
+		return Order{}
+	}
+
+	return
+}
