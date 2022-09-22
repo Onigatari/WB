@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Database</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <link type="image/x-icon" rel="shortcut icon" href="https://img.icons8.com/sf-regular-filled/64/undefined/save.png">
+</head>
+<body>
+<div class="pricing-header p-3 pb-md-4 mx-auto text-center">
+    <img src="https://img.icons8.com/cute-clipart/160/000000/save.png"/>
+    <h1 class="display-4 fw-normal mb-2"> Database | Level 0</h1>
+
+    <blockquote class="blockquote"><i>Test task for WILDBERRIES</i></blockquote>
+
+    <form action="/page" method="get" class="my-2">
+        <input type="text" name="order" class="form-control mx-auto" style="width: 500px;" id="InputUID" placeholder="Введите UID">
+        <button type="submit" class="btn btn-primary mx-auto my-2" style="width: 500px;">Отправить</button>
+    </form>
+
+    <hr>
+
+    <table class="table table-hover table-bordered table-striped my-2">
+        <thead class="text-bg-primary border-primary">
+        <tr>
+            <th scope="col">Order UID</th>
+            <th scope="col">Delivery Name</th>
+            <th scope="col">Date</th>
+        </tr>
+        </thead>
+        <tbody>
+        {{ range $key, $val := .database }}
+        <tr>
+            <td>{{ $val.OrderUID }}</td>
+            <td>{{ $val.Delivery.Name }}</td>
+            <td>{{ $val.DateCreated.Format "02 Jan 2006 15:04:05" }}</td>
+        </tr>
+        {{ end }}
+        </tbody>
+    </table>
+
+</div>
+
+<footer class="pricing-header p-3 pb-md-4 mx-auto text-center">
+    <hr>
+    <p class="text-muted ">© 2022 Onigatari &#128190;</p>
+</footer>
+</body>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
+        crossorigin="anonymous"></script>
+</html>

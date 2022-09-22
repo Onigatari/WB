@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Database</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <link type="image/x-icon" rel="shortcut icon" href="https://img.icons8.com/sf-regular-filled/64/undefined/save.png">
+</head>
+<body>
+<div class="pricing-header p-3 pb-md-4 mx-5 text-center">
+    <h1 class="display-4 fw-normal mb-2"> Order </h1>
+    <hr>
+    <table class="table table-hover table-bordered my-2">
+        <tbody>
+        <tr>
+            <td class="text-bg-primary align-middle"><b>Order UID: </b></td>
+            <td>{{ .order.OrderUID }}</td>
+        </tr>
+        <tr>
+            <td class="text-bg-primary align-middle"><b>Track Number: </b></td>
+            <td>{{ .order.TrackNumber }}</td>
+        </tr>
+        <tr>
+            <td class="text-bg-primary align-middle"><b>Entry: </b></td>
+            <td>{{ .order.Entry }}</td>
+        </tr>
+        <tr>
+            <td class="text-bg-primary align-middle"><b>Delivery: </b></td>
+            <td>
+                <table class="table table-hover table-bordered my-2">
+                    <tr>
+                        <td><b>Name:</b></td>
+                        <td>{{ .order.Delivery.Name }}</td>
+                    </tr>
+                    <tr>
+                        <td><b>Phone:</b></td>
+                        <td>{{ .order.Delivery.Phone }}</td>
+                    </tr>
+                    <tr>
+                        <td><b>Zip:</b></td>
+                        <td>{{ .order.Delivery.Zip }}</td>
+                    </tr>
+                    <tr>
+                        <td><b>City:</b></td>
+                        <td>{{ .order.Delivery.City }}</td>
+                    </tr>
+                    <tr>
+                        <td><b>Address:</b></td>
+                        <td>{{ .order.Delivery.Address }}</td>
+                    </tr>
+                    <tr>
+                        <td><b>Region:</b></td>
+                        <td>{{ .order.Delivery.Region }}</td>
+                    </tr>
+                    <tr>
+                        <td><b>Email:</b></td>
+                        <td>{{ .order.Delivery.Email }}</td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td class="text-bg-primary align-middle"><b>Payment: </b></td>
+            <td>
+                <table  class="table table-hover table-bordered my-2">
+                    <tr>
+                        <td><b>Transaction:</b></td>
+                        <td>{{ .order.Payment.Transaction }}</td>
+                    </tr>
+                    <tr>
+                        <td><b>RequestID:</b></td>
+                        <td>{{ .order.Payment.RequestID }}</td>
+                    </tr>
+                    <tr>
+                        <td><b>Currency:</b></td>
+                        <td>{{ .order.Payment.Currency }}</td>
+                    </tr>
+                    <tr>
+                        <td><b>Provider:</b></td>
+                        <td>{{ .order.Payment.Provider }}</td>
+                    </tr>
+                    <tr>
+                        <td><b>Amount:</b></td>
+                        <td>{{ .order.Payment.Amount }}</td>
+                    </tr>
+                    <tr>
+                        <td><b>PaymentDt:</b></td>
+                        <td>{{ .order.Payment.PaymentDt }}</td>
+                    </tr>
+                    <tr>
+                        <td><b>Bank:</b></td>
+                        <td>{{ .order.Payment.Bank }}</td>
+                    </tr>
+                    <tr>
+                        <td><b>DeliveryCost:</b></td>
+                        <td>{{ .order.Payment.DeliveryCost }}</td>
+                    </tr>
+                    <tr>
+                        <td><b>GoodsTotal:</b></td>
+                        <td>{{ .order.Payment.GoodsTotal }}</td>
+                    </tr>
+                    <tr>
+                        <td><b>CustomFee:</b></td>
+                        <td>{{ .order.Payment.CustomFee }}</td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td class="text-bg-primary align-middle"><b>Items: </b></td>
+            <td>
+                {{ range $_, $val := .order.Items }}
+                <table  class="table table-hover table-bordered my-2">
+                    <tr>
+                        <td><b>ChrtID:</b></td>
+                        <td>{{ $val.ChrtID }}</td>
+                    </tr>
+                    <tr>
+                        <td><b>TrackNumber:</b></td>
+                        <td>{{ $val.TrackNumber }}</td>
+                    </tr>
+                    <tr>
+                        <td><b>Price:</b></td>
+                        <td>{{ $val.Price }}</td>
+                    </tr>
+                    <tr>
+                        <td><b>Rid:</b></td>
+                        <td>{{ $val.Rid }}</td>
+                    </tr>
+                    <tr>
+                        <td><b>Name:</b></td>
+                        <td>{{ $val.Name }}</td>
+                    </tr>
+                    <tr>
+                        <td><b>Sale:</b></td>
+                        <td>{{ $val.Sale }}</td>
+                    </tr>
+                    <tr>
+                        <td><b>Size:</b></td>
+                        <td>{{ $val.Size }}</td>
+                    </tr>
+                    <tr>
+                        <td><b>TotalPrice:</b></td>
+                        <td>{{ $val.TotalPrice }}</td>
+                    </tr>
+                    <tr>
+                        <td><b>NmID:</b></td>
+                        <td>{{ $val.NmID }}</td>
+                    </tr>
+                    <tr>
+                        <td><b>Brand:</b></td>
+                        <td>{{ $val.Brand }}</td>
+                    </tr>
+                    <tr>
+                        <td><b>Status:</b></td>
+                        <td>{{ $val.Status }}</td>
+                    </tr>
+                </table>
+                {{ end }}
+            </td>
+        </tr>
+        <tr>
+            <td class="text-bg-primary align-middle"><b>Locale: </b></td>
+            <td>{{ .order.Locale }}</td>
+        </tr>
+        <tr>
+            <td class="text-bg-primary align-middle"><b>Internal Signature: </b></td>
+            <td>{{ .order.InternalSignature }}</td>
+        </tr>
+        <tr>
+            <td class="text-bg-primary align-middle"><b>CustomerID: </b></td>
+            <td>{{ .order.CustomerID }}</td>
+        </tr>
+        <tr>
+            <td class="text-bg-primary align-middle"><b>Delivery Service: </b></td>
+            <td>{{ .order.DeliveryService }}</td>
+        </tr>
+        <tr>
+            <td class="text-bg-primary align-middle"><b>Shardkey: </b></td>
+            <td>{{ .order.Shardkey }}</td>
+        </tr>
+        <tr>
+            <td class="text-bg-primary align-middle"><b>SmID: </b></td>
+            <td>{{ .order.SmID }}</td>
+        </tr>
+        <tr>
+            <td class="text-bg-primary align-middle"><b>Date Created: </b></td>
+            <td>{{ .order.DateCreated.Format "02 Jan 2006 15:04:05" }}</td>
+        </tr>
+        <tr>
+            <td class="text-bg-primary align-middle"><b>OofShard: </b></td>
+            <td>{{ .order.OofShard }}</td>
+        </tr>
+        </tbody>
+    </table>
+
+    <hr>
+    <footer class="pricing-header p-3 pb-md-4 mx-auto text-center">
+        <p class="text-muted ">© 2022 Onigatari &#128190;</p>
+    </footer>
+</div>
+
+</body>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
+        crossorigin="anonymous"></script>
+</html>

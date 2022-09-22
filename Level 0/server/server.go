@@ -12,13 +12,14 @@ var DataBaseOrdersCache = make(map[string]parser.Order)
 
 func StartServer() {
 	router := gin.Default()
-	router.LoadHTMLGlob("index.html")
+	router.LoadHTMLGlob("templates/*")
 
 	router.GET("/", MainPage)
+	router.GET("/page", GetOrderPage)
 	router.GET("/order/:id", GetOrderById)
 
 	log.Println("HTTP server is running! Connect - http://localhost:8080")
-	router.Run("localhost:8080")
+	router.Run(":8080")
 }
 
 func MainPage(c *gin.Context) {
@@ -27,12 +28,14 @@ func MainPage(c *gin.Context) {
 	})
 }
 
-func СacheFromDatabase() {
-	database.CreateDbTablesIfNotExist()
-	ordersFromDB := database.GetAllOrdersFromDB()
-
-	for _, item := range ordersFromDB {
-		DataBaseOrdersCache[item.OrderUID] = item
+func GetOrderPage(c *gin.Context) {
+	id := c.Request.URL.Query()["order"][0]
+	if val, ok := DataBaseOrdersCache[id]; ok {
+		c.HTML(http.StatusOK, "order_page.html", gin.H{
+			"order": val,
+		})
+	} else {
+		c.IndentedJSON(http.StatusNotFound, "Error! ID does not exist")
 	}
 }
 
@@ -42,5 +45,14 @@ func GetOrderById(c *gin.Context) {
 		c.IndentedJSON(http.StatusOK, val)
 	} else {
 		c.IndentedJSON(http.StatusNotFound, "Error! ID does not exist")
+	}
+}
+
+func СacheFromDatabase() {
+	database.CreateDbTablesIfNotExist()
+	ordersFromDB := database.GetAllOrdersFromDB()
+
+	for _, item := range ordersFromDB {
+		DataBaseOrdersCache[item.OrderUID] = item
 	}
 }
