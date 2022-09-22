@@ -11,7 +11,7 @@ func main() {
 	sc, _ := stan.Connect("test-cluster", "publisher")
 	defer sc.Close()
 
-	file, _ := os.Open("./models/model.json")
+	file, _ := os.Open("./models/temp.json")
 	data, _ := io.ReadAll(file)
 	_ = sc.Publish("json_channel", data)
 

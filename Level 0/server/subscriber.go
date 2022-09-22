@@ -9,7 +9,7 @@ import (
 	"sync"
 )
 
-func ListenToNATSStreaming() {
+func ListenNATSStreaming() {
 	sc, err := stan.Connect("test-cluster", "subscriber")
 	if err != nil {
 		log.Fatal(err)
@@ -18,7 +18,7 @@ func ListenToNATSStreaming() {
 	defer sc.Close()
 
 	log.Println("Nats streaming chanel listen")
-	sc.Subscribe("json_channel", func(m *stan.Msg) {
+	_, _ = sc.Subscribe("json_channel", func(m *stan.Msg) {
 		order := parser.ParseJsonByteArray(m.Data)
 		database.InsertOrderToDB(order)
 		DataBaseOrdersCache[order.OrderUID] = order

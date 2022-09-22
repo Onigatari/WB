@@ -14,7 +14,7 @@ func main() {
 	wg.Add(1)
 	go server.StartServer()
 
-	server.ListenToNATSStreaming()
+	server.ListenNATSStreaming()
 
 	wg.Wait()
 }

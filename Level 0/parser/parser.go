@@ -75,9 +75,10 @@ func ParseJsonFile() {
 
 	log.Println("models.json open")
 
-	defer jsonFile.Close()
-
-	log.Println("models.json close")
+	defer func() {
+		log.Println("models.json close")
+		jsonFile.Close()
+	}()
 
 	byteValue, _ := io.ReadAll(jsonFile)
 
