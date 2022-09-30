@@ -58,8 +58,7 @@ func setBit(number int64, bitPos int, bitValue int) int64 {
 
 func main() {
 	var number int64
-	var bitPos int
-	var bitValue int
+	var bitPos, bitValue int
 
 	fmt.Println("Введи через пробел: число, номер бита и значение, которое хочешь поместить в бит")
 	_, err := fmt.Scanf("%d %d %d", &number, &bitPos, &bitValue)
@@ -70,7 +69,9 @@ func main() {
 
 	fmt.Printf("Result: %v\n", number)
 	fmt.Printf("Binary: %b\n", number)
+
 	number = setBit(number, bitPos, bitValue)
+
 	fmt.Printf("Result: %v\n", number)
 	fmt.Printf("Binary: %b\n", number)
 }
