@@ -8,7 +8,7 @@ import "fmt"
 // тип переменной: int, string, bool, channel из переменной типа interface{}.
 
 // Используем пустой интерфейс, для использвания объектов любого типа
-func getType(v interface{}) string {
+func getType(v any) string {
 	// %T представление типа значения в Go
 	return fmt.Sprintf("%T", v)
 }
