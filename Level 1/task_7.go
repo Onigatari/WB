@@ -21,8 +21,8 @@ func main() {
 				counters[j]++
 				mu.Unlock()
 			}
+			wg.Done()
 		}(counters, i, mu)
-		wg.Done()
 	}
 
 	wg.Wait()

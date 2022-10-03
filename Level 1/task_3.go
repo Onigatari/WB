@@ -17,8 +17,8 @@ func getSquareSum(nums []int) int {
 
 	for _, val := range nums {
 		go func(val int) {
-			//fmt.Println(val * val)
 			defer wg.Done()
+			fmt.Println(val * val)
 			sum += val * val
 		}(val)
 	}

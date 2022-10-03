@@ -57,7 +57,7 @@ func main() {
 		case chanelInt <- result:
 			result++
 		case <-osSignals:
-			fmt.Println("Program stopped")
+			fmt.Println("Конец")
 			os.Exit(0)
 		}
 	}

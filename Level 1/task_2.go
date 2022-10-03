@@ -15,10 +15,10 @@ func squareWithWaitGroup(nums []int) {
 	for _, val := range nums {
 		wg.Add(1)
 		// Возведение в квадрат с использованием WaitGroup
-		go func(val int, wg *sync.WaitGroup) {
+		go func(val int) {
 			defer wg.Done()
 			fmt.Println(fmt.Sprintf("Wait Group: %d", val*val))
-		}(val, &wg)
+		}(val)
 	}
 
 	wg.Wait()
