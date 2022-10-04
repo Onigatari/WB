@@ -23,6 +23,7 @@ func main() {
 		for _, val := range array {
 			inputChannel <- val
 		}
+		close(inputChannel)
 	}()
 
 	// Горутина для записи обработки значений из певого канала и записи во второй
@@ -30,6 +31,7 @@ func main() {
 		for {
 			x, ok := <-inputChannel
 			if !ok {
+				close(outputChannel)
 				break
 			}
 			outputChannel <- x * 2

@@ -49,7 +49,9 @@ func main() {
 	}
 
 	a := Action{h}
-
+	fmt.Printf("Type: %T | Value: %v\n", h, h)
+	fmt.Printf("Type: %T | Value: %v\n", a, a)
+	fmt.Println("========================")
 	fmt.Println(h.GetHuman())
 	fmt.Println(a.GetHuman())
 	fmt.Println("========================")
@@ -58,5 +60,4 @@ func main() {
 	fmt.Println("========================")
 	fmt.Println(h.GetHeight())
 	fmt.Println(a.GetHeight())
-
 }
