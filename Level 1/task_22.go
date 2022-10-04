@@ -27,5 +27,4 @@ func main() {
 	fmt.Printf("Умножение = %d \n", big.NewInt(0).Mul(a, b))
 
 	fmt.Printf("Деление = %f \n", big.NewFloat(0.0).Quo(big.NewFloat(0.0).SetInt(a), big.NewFloat(0.0).SetInt(b)))
-
 }
