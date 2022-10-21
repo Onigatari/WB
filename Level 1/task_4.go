@@ -22,7 +22,7 @@ type Worker struct {
 
 func (worker *Worker) Println(chanelInt chan int) {
 	for {
-		fmt.Println("Worker", worker.num, "| Value:", <-chanelInt)
+		fmt.Println("WorkerTemp", worker.num, "| Value:", <-chanelInt)
 		time.Sleep(time.Second)
 	}
 }
@@ -43,7 +43,7 @@ func main() {
 		return
 	}
 
-	// Создаем объекты структуры Worker с номерами и запускаем у каждого в отдельной горутине функцию вывода
+	// Создаем объекты структуры WorkerTemp с номерами и запускаем у каждого в отдельной горутине функцию вывода
 	for i := 1; i <= workerCount; i++ {
 		worker := Worker{i}
 		go worker.Println(chanelInt)
